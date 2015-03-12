@@ -1,0 +1,68 @@
+import java.io.Console;
+
+class InputMethod{
+
+	public static void main(String[] args){
+		int whateverVariable = new InputMethod().inputInt("__PROMPT GOES HERE__");	//Main method is just for testing
+		System.out.println(whatever);																								//and should be ignored
+	}
+
+	
+
+	public String inputString(String prompt){
+
+		Console con = System.console();
+		boolean quit = false;
+		String input = "null";
+		
+
+		do{
+			try{
+				input = con.readLine(prompt);
+				quit = true;
+
+			} catch(Exception e){							//catch all exception - bad practice
+				System.out.println("Please enter valid input");
+			}
+
+		} while(!quit);
+
+		return input;
+	
+	
+	}
+
+	public int inputInt(String prompt){
+
+		Console con = System.console();
+		boolean quit = false;
+		String input = "null";
+		int finalInput = -1;
+
+
+		do{
+			try{
+				input = con.readLine(prompt);
+				finalInput = Integer.parseInt(input);
+
+				if(finalInput < 0){						//Make sure it's positive
+					System.out.println("Please enter valid input");
+				} else {
+					quit = true;
+				}
+
+
+			} catch(Exception e){							//catch all exception - bad practice
+				System.out.println("Please enter valid input");
+			}
+
+		} while(!quit);
+	
+		return finalInput;
+
+	}
+
+
+
+
+}
